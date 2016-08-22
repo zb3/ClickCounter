@@ -2,7 +2,7 @@
 
 This is a WebExtension (both chrome and firefox supported), which allows you to find out how much clicks you make on the web. Looks like this:
 
-![Fancy screenshot](https://github.com/zb3/ClickCounter/raw/master/screenshot.png)
+![Fancy screenshot](https://github.com/zb3/ClickCounter/raw/master/screen.png)
 
 But what counts as "click on the web"?
 
