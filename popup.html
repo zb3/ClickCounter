@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>ClickCounter</title>
+  <style>
+    body {
+      width: 230px;
+      font-size: 12px;
+    }
+    
+    a,
+    a:visited,
+    a:active {
+      color: #0256ad;
+    }
+    
+    #top-domains-pagination {
+      text-align: center;
+    }
+    
+    #top-domains-pagination a {
+      display: none;
+    }
+    
+    #top-domains-pagination a.on {
+      display: inline;
+    }
+    
+    #top-domains-pagination a.on + a.on {
+      border-left: solid #999 1px;
+      margin-left: 4px;
+      padding-left: 4px;
+    }
+    
+    table.stats {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+    }
+    
+    table.stats tr td {
+      padding: 3px;
+      border-bottom: 1px solid #999;
+    }
+    
+    table.stats tr td:last-child {
+      text-align: right;
+      font-weight: bold;
+    }
+    
+    table.domain-stats {
+      margin-top: 4px;
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      margin-bottom: 3px;
+    }
+    
+    table.domain-stats thead tr td {
+      background-color: #eee;
+      border-top: 1px solid #999;
+    }
+    
+    table.domain-stats tr td {
+      border-bottom: 1px solid #999;
+    }
+    
+    table.domain-stats td:first-child {
+      width: 40px;
+      text-align: center;
+    }
+    
+    table.domain-stats tr td:nth-child(2) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      direction: rtl;
+      text-align: left;
+      white-space: nowrap;
+    }
+    
+    table.domain-stats td:last-child {
+      width: 50px;
+      text-align: center;
+    }
+    
+    table.domain-stats tbody tr td:last-child {
+      font-weight: bold;
+    }
+    
+    .clear-buttons {
+      text-align: center;
+      margin-top: 18px;
+    }
+    
+    #domain-stats {
+      padding-top: 8px;
+    }
+  </style>
+  <script src="popup.js"></script>
+</head>
+
+<!--
+Inline display none means we can make the element visible by
+display = '', which isn't possible when you specify display
+in CSS...
+-->
+
+<body>
+  <div id="loading">
+    Loading...
+  </div>
+    
+  <div id="results" style="display: none;">
+    <table class="stats">
+      <tr>
+        <td>Clicks today
+        <td><span id="today"></span>
+      <tr id="results-yesterday" style="display: none;">
+        <td>Clicks yesterday
+        <td><span id="yesterday"></span>
+      <tr>
+        <td>Total clicks
+        <td><span id="total"></span>
+    </table>
+
+    <div id="domain-stats" style="display: none;">
+      <span class="domains">Domains with most clicks:</span>
+
+      <table class="domain-stats">
+        <thead>
+          <tr>
+            <td>No.
+            <td>Domain
+            <td>Count
+        </thead>
+        <tbody id="top-domains">
+        </tbody>
+      </table>
+
+      <div id="top-domains">
+      </div>
+
+      <div id="top-domains-pagination">
+        <a href="" id="domains-prev-page">Previous page</a><a href="" id="domains-next-page">Next page</a>
+      </div>
+    </div>
+
+    <div class="clear-buttons">
+      <button id="clear-stats">Clear stats</button> <button id="clear-domain-stats">Clear domains</button>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
